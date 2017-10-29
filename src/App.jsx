@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      keyword: '',
+      filterKeyword: '',
       selectedProducts: [],
       products: [
         {id: 1, name: 'AirMax 90', brand: 'Nike'},
@@ -15,7 +15,7 @@ class App extends Component {
       ],
     };
     this.handleProductSelect = this.handleProductSelect.bind(this);
-    this.handleOnFilterInputChange = this.handleOnFilterInputChange.bind(this);
+    this.handleFilterKeywordInputChange = this.handleFilterKeywordInputChange.bind(this);
   }
 
   handleProductSelect(product) {
@@ -24,9 +24,9 @@ class App extends Component {
     }))
   }
 
-  handleOnFilterInputChange(event) {
+  handleFilterKeywordInputChange(event) {
     this.setState({
-      keyword: event.currentTarget.value,
+      filterKeyword: event.currentTarget.value,
     })
   }
 
@@ -37,13 +37,13 @@ class App extends Component {
         <Cart selectedProducts={this.state.selectedProducts} />
         <input 
           type="text" 
-          value={this.state.keyword}
-          onChange={this.handleOnFilterInputChange}
+          value={this.state.filterKeyword}
+          onChange={this.handleFilterKeywordInputChange}
         />
         <ProductList 
           products={this.state.products} 
           onProductSelect={this.handleProductSelect}
-          keyword={this.state.keyword}
+          filterKeyword={this.state.filterKeyword}
         />
       </div>
     );

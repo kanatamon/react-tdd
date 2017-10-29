@@ -1,12 +1,12 @@
 import React from 'react';
 import { array, func, string } from 'prop-types';
 
-function ProductList({ products, onProductSelect, keyword }) {
+function ProductList({ products, onProductSelect, filterKeyword }) {
   return (
     <div>
       {
         products
-          .filter(product => product.brand.includes(keyword))
+          .filter(product => product.brand.includes(filterKeyword))
           .map(product => 
             <li 
               key={product.id}
@@ -23,11 +23,7 @@ function ProductList({ products, onProductSelect, keyword }) {
 ProductList.propTypes = {
   products: array.isRequired,
   onProductSelect: func.isRequired,
-  keyword: string,
-};
-
-ProductList.defaultProps = {
-  keyword: '',
+  filterKeyword: string.isRequired,
 };
 
 export default ProductList;

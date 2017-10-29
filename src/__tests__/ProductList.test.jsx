@@ -14,6 +14,7 @@ beforeEach(() => {
     <ProductList
       products={mockProducts} 
       onProductSelect={productSelectFn}
+      filterKeyword=""
     />
   );
 });
@@ -57,7 +58,7 @@ it('should display list of products if keyword is empty', () => {
     <ProductList
       products={mockProducts} 
       onProductSelect={() => null}
-      keyword=""
+      filterKeyword=""
     />
   );
   expect(wrapper.find('li').length).toBe(3);
@@ -73,7 +74,7 @@ it('should display list of products if keyword is empty', () => {
     <ProductList
       products={mockProducts} 
       onProductSelect={() => null}
-      keyword="MockBrandA"
+      filterKeyword="MockBrandA"
     />
   );
   expect(wrapper.find('li').length).toBe(1);
