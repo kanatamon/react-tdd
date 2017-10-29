@@ -1,5 +1,5 @@
 import React from 'react';
-import { array } from 'prop-types';
+import { array, func } from 'prop-types';
 
 function ProductList({ products }) {
   return (
@@ -17,6 +17,7 @@ function ProductList({ products }) {
 
 ProductList.propTypes = {
   products: array.isRequired,
+  onProductSelect: func.isRequired,
 };
 
 export default ProductList;

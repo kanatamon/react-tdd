@@ -5,19 +5,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedProducts: [],
       products: [
         {id: 1, name: 'AirMax 90', brand: 'Nike'},
         {id: 2, name: 'Yeezy', brand: 'Adidas'},
         {id: 3, name: 'Classic', brand: 'Reebok'},
       ],
     };
+    this.handleProductSelect = this.handleProductSelect.bind(this);
+  }
+
+  handleProductSelect(product) {
+    this.setState(prevState => ({
+      selectedProducts: prevState.selectedProducts.concat(product),
+    }))
   }
 
   render() {
     return (
       <div>
         <h1>My Product Store</h1>
-        <ProductList products={this.state.products} />
+        <ProductList 
+          products={this.state.products} 
+          onProductSelect={this.handleProductSelect}
+        />
       </div>
     );
   }

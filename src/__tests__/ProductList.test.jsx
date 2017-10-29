@@ -9,7 +9,12 @@ beforeEach(() => {
     {id: 2, name: 'Mock Product 2', brand: 'MockBrandB'},
     {id: 3, name: 'Mock Product 3', brand: 'MockBrandC'},
   ];
-   wrapper = shallow(<ProductList products={mockProducts} />);
+  wrapper = shallow(
+    <ProductList
+      products={mockProducts} 
+      onProductSelect={() => null}
+    />
+  );
 });
 
 it('should render list of products as an unordered list', () => {
