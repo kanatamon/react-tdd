@@ -1,18 +1,20 @@
 import React from 'react';
-import { array, func } from 'prop-types';
+import { array, func, string } from 'prop-types';
 
-function ProductList({ products, onProductSelect }) {
+function ProductList({ products, onProductSelect, keyword }) {
   return (
     <div>
       {
-        products.map(product => 
-          <li 
-            key={product.id}
-            onClick={() => onProductSelect(product)}
-          >
-            {product.name} {product.brand}
-          </li>
-        )
+        products
+          .filter(product => product.brand.includes(keyword))
+          .map(product => 
+            <li 
+              key={product.id}
+              onClick={() => onProductSelect(product)}
+            >
+              {product.name} {product.brand}
+            </li>
+          )
       }
     </div>
   );
@@ -21,6 +23,11 @@ function ProductList({ products, onProductSelect }) {
 ProductList.propTypes = {
   products: array.isRequired,
   onProductSelect: func.isRequired,
+  keyword: string,
+};
+
+ProductList.defaultProps = {
+  keyword: '',
 };
 
 export default ProductList;

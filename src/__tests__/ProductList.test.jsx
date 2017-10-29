@@ -46,3 +46,35 @@ it('should pass all the stuff about the product to `onProductSelect`', () => {
   wrapper.find('li').first().simulate('click');
   expect(productSelectFn.mock.calls[0][0]).toEqual(mockProducts[0]);
 });
+
+it('should display list of products if keyword is empty', () => {
+  mockProducts = [
+    {id: 1, name: 'Mock Product 1', brand: 'MockBrandA'},
+    {id: 2, name: 'Mock Product 2', brand: 'MockBrandB'},
+    {id: 3, name: 'Mock Product 3', brand: 'MockBrandC'},
+  ];
+  wrapper = shallow(
+    <ProductList
+      products={mockProducts} 
+      onProductSelect={() => null}
+      keyword=""
+    />
+  );
+  expect(wrapper.find('li').length).toBe(3);
+});
+
+it('should display list of products if keyword is empty', () => {
+  mockProducts = [
+    {id: 1, name: 'Mock Product 1', brand: 'MockBrandA'},
+    {id: 2, name: 'Mock Product 2', brand: 'MockBrandB'},
+    {id: 3, name: 'Mock Product 3', brand: 'MockBrandC'},
+  ];
+  wrapper = shallow(
+    <ProductList
+      products={mockProducts} 
+      onProductSelect={() => null}
+      keyword="MockBrandA"
+    />
+  );
+  expect(wrapper.find('li').length).toBe(1);
+});
