@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductList from './components/ProductList';
+import Cart from './components/Cart';
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class App extends Component {
     return (
       <div>
         <h1>My Product Store</h1>
-        <p>You have selected {this.state.selectedProducts.length} product(s).</p>
+        <Cart selectedProducts={this.state.selectedProducts} />
         <ProductList 
           products={this.state.products} 
           onProductSelect={this.handleProductSelect}
